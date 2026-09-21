@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Hub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🎓</div>
+
+            <div>
+                <h2>Student Hub</h2>
+                <p>AI Student Assistant</p>
+                <span class="creater-name">Created by Saahil C</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#" class="nav-link active" data-page="home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="ai-chat">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Chat</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="study">
+                <i class="fa-solid fa-book"></i>
+                <span>Study Materials</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="assignments">
+                <i class="fa-solid fa-file-pen"></i>
+                <span>Assignment Helper</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="cgpa">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>CGPA Calculator</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="performance">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Performance Analysis</span>
+            </a>
+
+            <a href="#" class="nav-link" data-page="coding">
+                <i class="fa-solid fa-code"></i>
+                <span>Coding Assistant</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="topbar-title">
+                <h3>Student Hub</h3>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">S</div>
+                <span>Student</span>
+            </div>
+
+        </header>
+
+
+        <!-- HOME PAGE -->
+        <section class="page-section active" id="home">
+
+            <div class="welcome-section">
+
+                <div class="welcome-text">
+
+                    <p class="greeting">Welcome back, Student 👋</p>
+
+                    <h1>
+                        Your Smart
+                        <span>Student Assistant</span>
+                    </h1>
+
+                    <p class="description">
+                        Learn, calculate, analyze, and improve your
+                        academic journey with Student Hub.
+                    </p>
+
+                    <button class="primary-btn" data-page="ai-chat">
+                        Start AI Chat
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="robot">
+                    🤖
+                </div>
+
+            </div>
+
+
+            <div class="section-heading">
+                <h2>Explore Features</h2>
+                <p>Select a module to continue.</p>
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card" data-page="ai-chat">
+                    <div class="card-icon blue">🤖</div>
+                    <h3>AI Chat</h3>
+                    <p>Ask questions and get AI-powered answers.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+                <div class="feature-card" data-page="study">
+                    <div class="card-icon green">📚</div>
+                    <h3>Study Materials</h3>
+                    <p>Access useful study resources and links.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+                <div class="feature-card" data-page="assignments">
+                    <div class="card-icon orange">📝</div>
+                    <h3>Assignment Helper</h3>
+                    <p>Get help with assignments and topics.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+                <div class="feature-card" data-page="cgpa">
+                    <div class="card-icon purple">🎓</div>
+                    <h3>CGPA Calculator</h3>
+                    <p>Calculate GPA and CGPA easily.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+                <div class="feature-card" data-page="performance">
+                    <div class="card-icon pink">📊</div>
+                    <h3>Performance Analysis</h3>
+                    <p>Analyze your academic performance.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+                <div class="feature-card" data-page="coding">
+                    <div class="card-icon cyan">💻</div>
+                    <h3>Coding Assistant</h3>
+                    <p>Get programming guidance and support.</p>
+                    <button class="card-btn">Open Module →</button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI CHAT PAGE -->
+        <section class="page-section" id="ai-chat">
+
+            <div class="page-header">
+                <h2>🤖 AI Chat</h2>
+                <p>Ask anything related to your studies.</p>
+            </div>
+
+            <div class="form-card">
+
+                <label for="aiQuestion">Ask your question</label>
+
+                <textarea id="aiQuestion"
+                          placeholder="Type your question here..."></textarea>
+
+                <div class="button-row">
+
+                    <button id="askBtn" class="primary-btn">
+                        Ask AI
+                    </button>
+
+                    <button id="voiceBtn" class="secondary-btn">
+                        🎤
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="ai-response">
+
+                <h3>AI Response</h3>
+
+                <p id="responseText">
+                    Your answer will appear here.
+                </p>
+
+            </div>
+
+            <div class="chat-history">
+
+                <div class="history-header">
+
+    <h3>Chat History</h3>
+
+    <div class="history-buttons">
+
+        <button id="downloadChatBtn" class="download-btn">
+            <i class="fa-solid fa-download"></i>
+            Download History
+        </button>
+
+        <button id="clearChatBtn" class="danger-btn">
+            <i class="fa-solid fa-trash"></i>
+            Clear History
+        </button>
+
+    </div>
+
+</div>
+                <div id="chatHistory">
+                    No chat history yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDY MATERIALS PAGE -->
+        <section class="page-section" id="study">
+
+            <div class="page-header">
+                <h2>📚 Study Materials</h2>
+                <p>Explore learning resources.</p>
+            </div>
+
+            <div class="resource-grid">
+
+                <a href="https://www.geeksforgeeks.org/"
+                   target="_blank"
+                   class="resource-card">
+                    💻
+                    <h3>GeeksforGeeks</h3>
+                    <p>Programming and computer science.</p>
+                </a>
+
+                <a href="https://www.w3schools.com/"
+                   target="_blank"
+                   class="resource-card">
+                    🌐
+                    <h3>W3Schools</h3>
+                    <p>Web development tutorials.</p>
+                </a>
+
+                <a href="https://www.khanacademy.org/"
+                   target="_blank"
+                   class="resource-card">
+                    📖
+                    <h3>Khan Academy</h3>
+                    <p>Learn different academic subjects.</p>
+                </a>
+                <!-- NPTEL -->
+<a href="https://nptel.ac.in/" target="_blank" class="resource-card">
+    🎓
+    <h3>NPTEL</h3>
+    <p>Engineering courses and lectures.</p>
+</a>
+
+<!-- LeetCode -->
+<a href="https://leetcode.com/" target="_blank" class="resource-card">
+    🧠
+    <h3>LeetCode</h3>
+    <p>Practice coding and problem solving.</p>
+</a>
+
+<!-- MDN Web Docs -->
+<a href="https://developer.mozilla.org/" target="_blank" class="resource-card">
+    🌐
+    <h3>MDN Web Docs</h3>
+    <p>Learn HTML, CSS and JavaScript.</p>
+</a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASSIGNMENT MANAGER -->
+<section class="page-section" id="assignments">
+
+    <div class="page-header">
+        <h2>⚡ Assignment Manager</h2>
+        <p>Track your assignments and achieve your goals!</p>
+    </div>
+
+    <!-- ASSIGNMENT DASHBOARD -->
+    <div class="assignment-dashboard">
+
+        <!-- ADD ASSIGNMENT FORM -->
+        <div class="assignment-form neon-card">
+
+            <h3>＋ Add New Assignment</h3>
+
+            <label>Assignment Title</label>
+            <input
+                type="text"
+                id="assignmentTitle"
+                placeholder="Enter assignment title"
+            >
+
+            <label>Subject</label>
+            <input
+                type="text"
+                id="assignmentSubject"
+                placeholder="Enter subject"
+            >
+
+            <div class="assignment-row">
+
+                <div>
+                    <label>Due Date</label>
+                    <input type="date" id="assignmentDate">
+                </div>
+
+                <div>
+                    <label>Priority</label>
+                    <select id="assignmentPriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button id="addAssignmentBtn" class="neon-button">
+                ＋ Add Assignment
+            </button>
+
+        </div>
+
+        <!-- STATISTICS -->
+        <div class="assignment-stats">
+
+            <div class="stat-card">
+                <span>◉</span>
+                <h4>Total</h4>
+                <strong id="totalAssignments">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>●</span>
+                <h4>Pending</h4>
+                <strong id="pendingAssignments">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>✓</span>
+                <h4>Completed</h4>
+                <strong id="completedAssignments">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>!</span>
+                <h4>Overdue</h4>
+                <strong id="overdueAssignments">0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ASSIGNMENT LIST -->
+    <div class="assignment-list-section">
+
+        <h3>My Assignments</h3>
+
+        <div class="assignment-filters">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="pending">
+                Pending
+            </button>
+
+            <button class="filter-btn" data-filter="completed">
+                Completed
+            </button>
+
+            <button class="filter-btn" data-filter="overdue">
+                Overdue
+            </button>
+
+        </div>
+
+        <div id="assignmentList">
+
+            <p class="empty-assignment">
+                No assignments added yet. 🚀
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+        <!-- CGPA PAGE -->
+<section class="page-section" id="cgpa">
+
+    <div class="page-header">
+        <h2>🎓 CGPA Calculator</h2>
+        <p>Calculate your semester GPA and overall CGPA.</p>
+    </div>
+
+    <!-- GRADE REFERENCE TABLE -->
+    <div class="form-card">
+
+        <h3>📊 Grade Reference Table</h3>
+
+        <table class="grade-table">
+            <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Description</th>
+                    <th>Marks</th>
+                    <th>Grade Points</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>S</td>
+                    <td>Outstanding</td>
+                    <td>91–100</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>A+</td>
+                    <td>Excellent</td>
+                    <td>81–90</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>Very Good</td>
+                    <td>71–80</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>B+</td>
+                    <td>Good</td>
+                    <td>61–70</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>Average</td>
+                    <td>56–60</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>Pass</td>
+                    <td>51–55</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>U</td>
+                    <td>Fail</td>
+                    <td>Below 50</td>
+                    <td>0</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- ADD SUBJECT -->
+    <div class="form-card">
+
+        <h3>➕ Add Subject</h3>
+
+        <label for="cgpaSubject">Subject Name</label>
+
+        <input
+            type="text"
+            id="cgpaSubject"
+            placeholder="Enter subject name"
+        >
+
+        <label for="cgpaCredits">Credits</label>
+
+        <input
+            type="number"
+            id="cgpaCredits"
+            min="1"
+            placeholder="Enter credits"
+        >
+
+        <label for="cgpaGrade">Grade</label>
+
+        <select id="cgpaGrade">
+            <option value="">Select Grade</option>
+            <option value="10">S</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+            <option value="5">C</option>
+            <option value="0">U</option>
+        </select>
+
+        <button class="primary-btn" id="addSubjectBtn">
+            Add Subject
+        </button>
+
+    </div>
+
+    <!-- SUBJECT DETAILS -->
+    <div class="form-card">
+
+        <h3>📚 CGPA Subject Details</h3>
+
+        <div class="table-wrap">
+
+            <table class="grade-table">
+
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Points</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="cgpaSubjectList">
+                    <!-- Subjects will appear here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <h3 id="cgpaResult">CGPA: 0.00</h3>
+
+        <button class="primary-btn" id="calculateCgpaBtn">
+            Calculate CGPA
+        </button>
+
+    </div>
+
+</section>
+
+        <!-- PERFORMANCE PAGE -->
+<section class="page-section" id="performance">
+
+    <div class="page-header">
+        <h2>📊 Performance Analysis</h2>
+        <p>Analyze your marks, track your performance and achieve your goals.</p>
+    </div>
+
+    <!-- ENTER SUBJECT MARKS -->
+    <div class="form-card performance-form">
+
+        <h3>📝 Enter Subject Marks</h3>
+
+        <div class="performance-input-row">
+
+            <div>
+                <label for="performanceSubject">
+                    Subject Name
+                </label>
+
+                <input
+                    type="text"
+                    id="performanceSubject"
+                    placeholder="e.g. Mathematics"
+                >
+            </div>
+
+            <div>
+                <label for="marksObtained">
+                    Marks Obtained
+                </label>
+
+                <input
+                    type="number"
+                    id="marksObtained"
+                    min="0"
+                    placeholder="e.g. 85"
+                >
+            </div>
+
+            <div>
+                <label for="totalMarks">
+                    Total Marks
+                </label>
+
+                <input
+                    type="number"
+                    id="totalMarks"
+                    min="1"
+                    placeholder="e.g. 100"
+                >
+            </div>
+
+            <div class="performance-button-box">
+                <button class="primary-btn" id="addPerformanceBtn">
+                    ＋ Add Subject
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SUBJECT MARKS LIST -->
+    <div class="form-card">
+
+        <div class="section-title-row">
+            <h3>📚 Subject Marks List</h3>
+
+            <span class="subject-count">
+                Total Subjects: <strong id="performanceSubjectCount">0</strong>
+            </span>
+        </div>
+
+        <div class="table-wrap">
+
+            <table class="grade-table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Subject Name</th>
+                        <th>Marks Obtained</th>
+                        <th>Total Marks</th>
+                        <th>Percentage</th>
+                        <th>Grade</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="performanceSubjectList">
+                    <!-- Subjects will appear here -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p id="performanceEmptyMessage" class="result-text">
+            No subjects added yet.
+        </p>
+
+    </div>
+
+    <!-- PERFORMANCE RESULT -->
+    <div class="form-card performance-result-card">
+
+        <h3>📈 Performance Result</h3>
+
+        <div class="performance-result-grid">
+
+            <div class="result-box">
+                <span>📊</span>
+                <h4>Total Marks</h4>
+                <strong id="performanceTotalMarks">0 / 0</strong>
+            </div>
+
+            <div class="result-box">
+                <span>📈</span>
+                <h4>Average Percentage</h4>
+                <strong id="performanceAverage">0.00%</strong>
+            </div>
+
+            <div class="result-box">
+                <span>⭐</span>
+                <h4>Performance Level</h4>
+                <strong id="performanceLevel">Not Calculated</strong>
+            </div>
+
+            <div class="result-box">
+                <span>🏅</span>
+                <h4>Grade</h4>
+                <strong id="performanceGrade">-</strong>
+            </div>
+
+        </div>
+
+        <div class="performance-gauge">
+
+            <div class="gauge-circle">
+                <strong id="performancePercentage">0%</strong>
+                <span>Performance</span>
+            </div>
+
+            <div class="performance-insight">
+
+                <h4>💡 Performance Insight</h4>
+
+                <p id="performanceInsight">
+                    Add subject marks and click Calculate Performance
+                    to see your results and analysis.
+                </p>
+
+            </div>
+
+        </div>
+
+        <button class="primary-btn" id="calculatePerformanceBtn">
+            🔄 Calculate Performance
+        </button>
+
+    </div>
+
+</section>
+
+
+        <!-- CODING ASSISTANT / ONLINE COMPILER -->
+<section class="page-section" id="coding">
+
+    <div class="page-header">
+        <h2>💻 Online Compiler</h2>
+        <p>Write, practice and test your programs.</p>
+    </div>
+
+    <!-- COMPILER CARD -->
+    <div class="form-card compiler-card">
+
+        <h3>🚀 Code Editor</h3>
+
+        <label for="programmingLanguage">
+            Select Programming Language
+        </label>
+
+        <select id="programmingLanguage">
+
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="java">Java</option>
+        
+
+        </select>
+
+        <label for="codeEditor">
+            Write Your Code
+        </label>
+
+        <textarea
+            id="codeEditor"
+            class="code-editor"
+            placeholder="Write your code here..."
+            spellcheck="false"
+        ></textarea>
+
+        <div class="compiler-buttons">
+
+            <button class="primary-btn" id="runCodeBtn">
+                ▶ Run Code
+            </button>
+
+            <button class="secondary-btn" id="clearCodeBtn">
+                🗑 Clear
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- OUTPUT CARD -->
+    <div class="form-card output-card">
+
+        <h3>📤 Output</h3>
+
+        <pre id="codeOutput">Output will appear here...</pre>
+
+    </div>
+
+</section>
+        <!-- FOOTER -->
+        <footer class="creator-footer">
+            <p>Made with ❤️ for students</p>
+            <span>Student Hub © 2026</span>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
