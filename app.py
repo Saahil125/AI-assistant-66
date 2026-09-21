@@ -42,18 +42,26 @@ def ask():
 
     try:
 
-        response = client.responses.create(
-            model="gpt-5.6-luna",
-            instructions=(
+       response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {
+            "role": "system",
+            "content": (
                 "You are a helpful AI Assistant for Students. "
                 "Explain concepts clearly and simply. "
                 "Help students learn and understand."
-            ),
-            input=question
-        )
+            )
+        },
+        {
+            "role": "user",
+            "content": question
+        }
+    ]
+)
 
         return jsonify({
-            "answer": response.output_text
+            "answer":response.choices[0].message.content
         })
 
     except Exception as error:
